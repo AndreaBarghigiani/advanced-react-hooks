@@ -57,16 +57,16 @@ function useAsync(asyncCallback, initialState, dependencies) {
 }
 
 function PokemonInfo({pokemonName}) {
-  const state = useAsync(
-    () => {
-      if (!pokemonName) {
-        return
-      }
-      return fetchPokemon(pokemonName)
-    },
-    {status: pokemonName ? 'pending' : 'idle'},
-    [pokemonName],
-  )
+const state = useAsync(
+	() => {
+		if (!pokemonName) {
+			return
+		}
+		return fetchPokemon(pokemonName)
+	},
+	{status: pokemonName ? 'pending' : 'idle'},
+	[pokemonName],
+)
 
   const {data: pokemon, status, error} = state
 
